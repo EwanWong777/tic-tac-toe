@@ -87,7 +87,7 @@ class Game extends React.Component {
   jumpTo(step) {
     this.setState({
       stepNumber: step,
-      xIsNext: (step % 2) === 0,
+      xIsNext: step % 2 === 0
     });
   }
 
@@ -97,19 +97,23 @@ class Game extends React.Component {
     const winner = calculateWinner(current.squares);
 
     const moves = history.map((step, move) => {
-      const desc = move ? "Go to move #" + move : "Go to game start";
+      const desc = move ? "退回第" + move + "步" : "开始游戏";
       return (
-        <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+        <li
+          key={move}
+          className="game-info-moves"
+          onClick={() => this.jumpTo(move)}
+        >
+          {desc}
         </li>
       );
     });
 
     let status;
     if (winner) {
-      status = "Winner: " + winner;
+      status = "赢家: " + winner;
     } else {
-      status = "Next player: " + (this.state.xIsNext ? "X" : "O");
+      status = "玩家: " + (this.state.xIsNext ? "X" : "O");
     }
     return (
       <div className="game">
@@ -117,7 +121,7 @@ class Game extends React.Component {
           <Board squares={current.squares} onClick={i => this.handleClick(i)} />
         </div>
         <div className="game-info">
-          <div>{status}</div>
+          <div className="game-info-status">{status}</div>
           <ol>{moves}</ol>
         </div>
       </div>

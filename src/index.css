@@ -1,10 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font: 14px "Century Gothic", Futura, sans-serif;
   margin: 20px;
 }
 
-ol, ul {
-  padding-left: 30px;
+ol,
+ul {
+  list-style: none;
 }
 
 .board-row:after {
@@ -47,4 +53,12 @@ ol, ul {
 
 .game-info {
   margin-left: 20px;
+}
+
+.game-info-status {
+  margin-bottom: 8px;
+}
+
+.game-info-moves {
+  margin-bottom: 8px;
 }
